@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PrimerPractica
 {
-    class Nodo
+    public class Nodo
     {
         public Nodo Siguiente { get; set; }
         public Nodo Anterior { get; set; }

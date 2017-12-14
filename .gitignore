@@ -1,0 +1,13 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/PrimerPractica/obj/Debug
+/PrimerPractica/bin/Debug
+/PrimerPractica/.vs/PrimerPractica/v15/Server/sqlite3
+/PrimerPractica/packages/Newtonsoft.Json.10.0.3
+/PrimerPractica/.vs/PrimerPractica/v15/Server/sqlite3
+/PrimerPractica/bin/Debug
+/PrimerPractica/packages/Newtonsoft.Json.10.0.3
+/output
+/PrimerPractica/.vs/PrimerPractica/v15

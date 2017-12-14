@@ -18,6 +18,8 @@ namespace PrimerPractica
     {
         Lista<Usuario> lista = new Lista<Usuario>();
 
+        Usuario _usuarioActual = null;
+
         public Form1()
         {
             InitializeComponent();
@@ -28,6 +30,7 @@ namespace PrimerPractica
             
             Usuario usuario = new Usuario("renatosierra","12345");
             lista.Add(usuario);
+            button2.Enabled = true;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -35,7 +38,9 @@ namespace PrimerPractica
             Usuario u = lista.SerachUser(textBox1.Text);
             if(u != null)
             {
-                MessageBox.Show($"User {0} found!",u.UserName);
+                _usuarioActual = u;
+                MessageBox.Show($"User {u.UserName} found!");
+                button3.Enabled = true;
             }
             else
             {
@@ -56,7 +61,22 @@ namespace PrimerPractica
                         StreamReader reader = new StreamReader(myStream);
                         string text = reader.ReadToEnd();
                         FileDTO fileDTO = JsonConvert.DeserializeObject<FileDTO>(text);
+
+                        foreach (var x in fileDTO.archivo.pila.matrices.matriz)
+                        {
+                            _usuarioActual.pila.Push(x);
+                        }
+
+                        foreach (var x in fileDTO.archivo.cola.matrices.matriz)
+                        {
+                            _usuarioActual.cola.Enqueue(x);
+                        }
+
+                        MatrizDispersa ma = new MatrizDispersa(fileDTO.archivo.pila.matrices.matriz.First<Matriz>());
+                        ma.Print(ma);
                     }
+
+
                 }
                 catch (Exception ex)
                 {
@@ -68,6 +88,16 @@ namespace PrimerPractica
         private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
         {
 
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

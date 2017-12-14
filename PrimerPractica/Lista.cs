@@ -6,32 +6,46 @@ using System.Threading.Tasks;
 
 namespace PrimerPractica
 {
-    
-    class Lista<T> where T : Nodo,  new()
+
+    class Lista<T> where T : Nodo, new()
     {
+       
         internal T primero = null;
+        internal T ultimo = null;
+        public Lista(){
+        }
+        public Lista(int x, int y)
+        {
+        }
         public bool IsEmpty()
         {
             return primero == null ? true : false ;
         }
-        public void Add(T item) {
+        public T Add(T item) {
             if (IsEmpty())
             {
-                primero = item;
+                primero = ultimo  = item;
                 primero.Siguiente = primero;
                 primero.Anterior = primero;
+                return primero;
             }
             else
             {
-                Nodo i = primero;
-                while(i.Siguiente != primero)
-                {
-                    i = i.Siguiente;
-                }
+                //Nodo i = primero;
+                //do
+                //{
+                //    i = i.Siguiente;
+                //} while (i.Siguiente != primero);
 
-                item.Anterior = i;
+
+                item.Anterior = ultimo;
                 item.Siguiente = primero;
-                i.Siguiente = item;
+
+                ultimo.Siguiente = item;
+                primero.Anterior = item;
+
+                ultimo = item;
+                return (T)item;
                 
             }
         }
@@ -52,7 +66,7 @@ namespace PrimerPractica
                     }
                     i = i.Siguiente;
 
-                } while (i.Siguiente != primero);
+                } while (i != primero);
             }
             
             return null;
