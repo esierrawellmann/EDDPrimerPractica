@@ -15,7 +15,10 @@ namespace PrimerPractica
         {
             return top == null ? true : false;
         }
-
+        public T Peek()
+        {
+            return top;
+        }
         public void Push(T item) {
             if (IsEmpty())
             {

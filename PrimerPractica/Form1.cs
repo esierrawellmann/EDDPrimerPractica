@@ -72,8 +72,8 @@ namespace PrimerPractica
                             _usuarioActual.cola.Enqueue(x);
                         }
 
-                        MatrizDispersa ma = new MatrizDispersa(fileDTO.archivo.pila.matrices.matriz.First<Matriz>());
-                        ma.Print(ma);
+                        //MatrizDispersa ma = new MatrizDispersa(fileDTO.archivo.pila.matrices.matriz.First<Matriz>());
+                        //ma.Print(ma);
                     }
 
 
@@ -92,12 +92,34 @@ namespace PrimerPractica
 
         private void button4_Click(object sender, EventArgs e)
         {
-
+            MatrizDispersa peekCola = new  MatrizDispersa(_usuarioActual.cola.Peek());
+            peekCola.Print(peekCola);
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
+            MatrizDispersa cola = new MatrizDispersa(_usuarioActual.cola.Dequeue());
+            MatrizDispersa pila = new MatrizDispersa(_usuarioActual.pila.Pop());
+
+            if (cola.SizeY == pila.SizeX)
+            {
+                MatrizDispersa result = cola.MuliplyBy(pila);
+                result.Print(result);
+            }
+            else
+            {
+                MessageBox.Show("Dimensiones de Matriz Invalidas!");
+            }
+
             
+
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            MatrizDispersa ma = new MatrizDispersa(_usuarioActual.pila.Peek());
+            ma.Print(ma);
         }
     }
 }

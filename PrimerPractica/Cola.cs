@@ -29,6 +29,10 @@ namespace PrimerPractica
             index++;
         }
 
+        public T Peek()
+        {
+            return inicio;
+        }
         public T Dequeue()
         {
             if (isEmpty())
