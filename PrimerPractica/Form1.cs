@@ -62,18 +62,21 @@ namespace PrimerPractica
                         string text = reader.ReadToEnd();
                         FileDTO fileDTO = JsonConvert.DeserializeObject<FileDTO>(text);
 
-                        foreach (var x in fileDTO.archivo.pila.matrices.matriz)
+                        if(fileDTO.archivo?.pila !=null)
+                        foreach (var x in fileDTO.archivo?.pila?.matrices?.matriz)
                         {
                             _usuarioActual.pila.Push(x);
                         }
 
-                        foreach (var x in fileDTO.archivo.cola.matrices.matriz)
+                        if (fileDTO.archivo?.cola != null)
+                        foreach (var x in fileDTO.archivo?.cola?.matrices?.matriz)
                         {
                             _usuarioActual.cola.Enqueue(x);
                         }
 
                         //MatrizDispersa ma = new MatrizDispersa(fileDTO.archivo.pila.matrices.matriz.First<Matriz>());
                         //ma.Print(ma);
+                        groupBox1.Visible = true;
                     }
 
 
@@ -120,6 +123,16 @@ namespace PrimerPractica
         {
             MatrizDispersa ma = new MatrizDispersa(_usuarioActual.pila.Peek());
             ma.Print(ma);
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            _usuarioActual.pila.Print();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            _usuarioActual.cola.Print();
         }
     }
 }

@@ -42,6 +42,18 @@ namespace PrimerPractica
             
         }
 
+        public int GetAllSumValues()
+        {
+            int total =0;
+            for (int c = 0; c < this.SizeX; c++)
+            {
+                for (int j = 0; j < this.SizeY; j++)
+                {
+                    total += GetValueAt(this,c,j);
+                }
+            }
+            return total;
+        }
         public int GetValueAt(MatrizDispersa matriz,int x ,int y) {
 
             PosicionMatriz colMz = (PosicionMatriz)matriz.columna.primero;
