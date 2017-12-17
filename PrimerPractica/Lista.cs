@@ -22,6 +22,19 @@ namespace PrimerPractica
         {
             return primero == null ? true : false ;
         }
+        public void Delete(T item)
+        {
+            if (item == primero) {
+                primero = null;
+            }
+            else
+            {
+                item.Anterior.Siguiente = item.Siguiente;
+                item.Siguiente.Anterior = item.Anterior;
+                item = null;
+            }
+
+        }
         public T Add(T item) {
             if (IsEmpty())
             {

@@ -37,6 +37,7 @@ namespace PrimerPractica
             lista.Add(usuario);
             button2.Enabled = true;
             button9.Enabled = true;
+            button10.Enabled = true;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -144,6 +145,23 @@ namespace PrimerPractica
         private void button9_Click(object sender, EventArgs e)
         {
             lista.Print();
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            Usuario u = lista.SerachUser(textBox3.Text);
+            if(u != null){
+                DialogResult dialogResult = MessageBox.Show("Desea Eliminar?", "Confirma que desea eliminar?", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                {
+                    lista.Delete(u);
+                    MessageBox.Show("User Deeleted!");
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    //do something else
+                }
+            }
         }
     }
 }
