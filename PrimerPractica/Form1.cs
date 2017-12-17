@@ -29,8 +29,14 @@ namespace PrimerPractica
         {
             
             Usuario usuario = new Usuario("renatosierra","12345");
+            for(int i = 0; i <10; i++)
+            {
+                Usuario rnd = new Usuario($"renato{i}", $"{i}");
+                lista.Add(rnd);
+            }
             lista.Add(usuario);
             button2.Enabled = true;
+            button9.Enabled = true;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -133,6 +139,11 @@ namespace PrimerPractica
         private void button7_Click(object sender, EventArgs e)
         {
             _usuarioActual.cola.Print();
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            lista.Print();
         }
     }
 }

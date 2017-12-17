@@ -8,6 +8,7 @@ namespace PrimerPractica
 {
     public class Nodo
     {
+        public int Index { get; set; }
         public Nodo Siguiente { get; set; }
         public Nodo Anterior { get; set; }
 
